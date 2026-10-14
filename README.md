@@ -24,3 +24,10 @@ Statuts : nouvelle → en préparation → prête → livrée / annulée. Les pr
 La carte livrée est une **carte de démonstration** (articles d’exemple, prix 0 = « prix à définir ») :
 à remplacer dans `/admin/` → Carte & prix. Horaires du service : à renseigner (Textes & photos).
 Photos du site : © Accor/ibis (fiche officielle) — à faire valider par l’hôtel ou remplacer via l’admin.
+
+## En ligne
+- Site : https://sayler991.github.io/Ibis_cms/ · Tableau de bord : https://sayler991.github.io/Ibis_cms/admin/ (GitHub Pages, branche `gh-pages` = `site/` + `admin/`)
+- Netlify : déploiement anonyme temporaire (à réclamer dans l’heure, sinon supprimé). Pour un site Netlify durable : relier ce dépôt dans Netlify (netlify.toml prêt).
+
+## Tests
+`tools/e2e/e2e.js BASE_URL` (site + commande + page de connexion), `tools/e2e/alerts_test.js` + `alerts_harness.html` (alertes avec faux client Supabase).

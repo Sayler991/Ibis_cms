@@ -7,6 +7,8 @@ const sleep = ms => new Promise(r => setTimeout(r, ms));
 (async () => {
   const b = await p.launch({ executablePath: '/usr/bin/google-chrome', args: ['--no-sandbox'], headless: 'new' });
   const res = {};
+  const PW = process.env.SITE_PASSWORD;
+  if (PW) { const g = await b.newPage(); await g.goto(BASE, { waitUntil: 'networkidle2' }); const i = await g.$('input[type=password]'); if (i) { await i.type(PW); await Promise.all([g.waitForNavigation({ waitUntil: 'networkidle2' }).catch(() => {}), g.keyboard.press('Enter')]); } await g.close(); }
   const pg = await b.newPage(); const errs = [];
   pg.on('pageerror', e => errs.push(e.message)); pg.on('console', m => { if (m.type() === 'error') errs.push(m.text()); });
   await pg.setViewport({ width: 1366, height: 860 });
@@ -18,7 +20,7 @@ const sleep = ms => new Promise(r => setTimeout(r, ms));
   // panier : 2 × 1er article, 1 × dernier article
   const plus = async (i) => { await pg.evaluate(i => { const b = document.querySelectorAll('.ord-it [data-q="1"]'); (i < 0 ? b[b.length + i] : b[i]).click(); }, i); await sleep(150); };
   await plus(0); await plus(0); await plus(-1);
-  await pg.type('#ord-room', '101'); await pg.type('#ord-name', 'TEST E2E ibis'); await pg.type('#ord-phone', '0550 00 00 01');
+  await pg.type('#ord-room', '101'); await pg.type('#ord-name', 'TEST E2E ibis'); await pg.type('#ord-phone', process.env.TEST_PHONE || '0550 00 00 01');
   await pg.type('#ord-notes', 'Commande de test automatique — à supprimer');
   await pg.screenshot({ path: OUT + PREFIX + 'site_desktop_order_form.png' });
   await pg.click('#ord-send');

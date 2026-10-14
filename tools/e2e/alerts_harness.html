@@ -1,0 +1,16 @@
+<!doctype html><html lang="fr"><head><meta charset="utf-8"><title>Tableau de bord — ibis Tlemcen</title>
+<link rel="stylesheet" href="/admin/admin.css"><link rel="stylesheet" href="/admin/alerts.css"></head><body>
+<div id="app"><header class="top"><div class="brand"><img src="/assets/logo.svg" alt=""><b>Tableau de bord (harnais de test)</b></div><span id="status">benduy0@gmail.com</span></header>
+<div class="layout"><nav class="side"><button class="on" data-tab="commandes">🛎️ Commandes</button><button data-tab="clients">👥 Clients</button></nav>
+<main><h2>Commandes</h2><div class="crm-bar"><button class="btn btn-line btn-sm" id="refresh">↻ Actualiser</button></div><p class="mut">Harnais : faux client Supabase. Une commande arrive par le temps réel puis une autre par la relève de secours.</p></main></div></div>
+<script>
+window.LOG=[]; var rtHandler=null, pollRows=[];
+function q(rows){var o={select:function(){return o},order:function(){return o},limit:function(){return o},gt:function(){return o},eq:function(){return o},maybeSingle:function(){return o},then:function(f,r){return Promise.resolve({data:rows(),error:null}).then(f,r)}};return o}
+window.IBIS_SB={from:function(t){LOG.push('from:'+t);return q(function(){return t==='orders'?(pollRows.length?pollRows.splice(0):[{id:41}]):{name:'Client RT'}})},
+ channel:function(n){LOG.push('channel:'+n);var c={on:function(ev,f,h){LOG.push('on:'+JSON.stringify(f));rtHandler=h;return c},subscribe:function(cb){cb('SUBSCRIBED');return c}};return c},
+ removeChannel:function(){},realtime:{setAuth:function(){LOG.push('setAuth')}},
+ auth:{onAuthStateChange:function(cb){setTimeout(function(){cb('SIGNED_IN',{access_token:'x',user:{id:'u'}})},50)}}};
+document.getElementById('refresh').onclick=function(){LOG.push('refresh-clicked')};
+window.__origSetInterval=window.setInterval; window.setInterval=function(f,ms){if(ms===30000){window.__poll=f;LOG.push('poll-30s')}return window.__origSetInterval(f,ms)};
+</script>
+<script src="/admin/alerts.js"></script></body></html>
