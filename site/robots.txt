@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+Disallow: /admin/
+
+Sitemap: https://sayler991.github.io/Ibis_cms/sitemap.xml

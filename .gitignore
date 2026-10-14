@@ -1,0 +1,3 @@
+site/admin/
+node_modules/
+.netlify/

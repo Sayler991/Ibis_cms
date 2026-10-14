@@ -1,0 +1,24 @@
+# ibis Tlemcen — Netlify (site statique + tableau de bord /admin)
+# Aucune variable d'environnement n'est nécessaire : la configuration
+# Supabase est dans site/config.js.
+[build]
+  publish = "site"
+  # copie le dossier admin/ dans le site publié → https://VOTRE-SITE/admin/
+  command = "rm -rf site/admin && cp -r admin site/admin"
+
+[[headers]]
+  for = "/admin/*"
+  [headers.values]
+    X-Robots-Tag = "noindex, nofollow"
+    Cache-Control = "no-cache"
+    X-Frame-Options = "SAMEORIGIN"
+
+[[headers]]
+  for = "/config.js"
+  [headers.values]
+    Cache-Control = "no-cache"
+
+[[headers]]
+  for = "/content.json"
+  [headers.values]
+    Cache-Control = "no-cache"

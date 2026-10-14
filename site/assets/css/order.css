@@ -1,0 +1,19 @@
+.ord-grid{display:grid;grid-template-columns:1.4fr 1fr;gap:clamp(1.5rem,4vw,3rem);align-items:start}
+@media (max-width:900px){.ord-grid{grid-template-columns:1fr}}
+.ord-cat{margin-bottom:2rem}.ord-cat h3{font:500 1.6rem/1.1 var(--disp);color:var(--g1);margin:0 0 .9rem;border-bottom:1px solid var(--line);padding-bottom:.5rem}
+.ord-it{display:flex;gap:1rem;align-items:center;justify-content:space-between;padding:.85rem 0;border-bottom:1px dashed var(--line)}
+.ord-it b{display:block;font-weight:500}.ord-it small{color:var(--mut);display:block;margin-top:.2rem}
+.ord-it .pr{color:var(--g2);white-space:nowrap;font-size:.9rem}.ord-it.off{opacity:.45}
+.qty{display:inline-flex;align-items:center;gap:.4rem}.qty button{width:34px;height:34px;border-radius:50%;border:1px solid var(--line2);background:transparent;color:var(--ink);font-size:1.1rem;cursor:pointer}
+.qty span{min-width:1.4em;text-align:center}
+.ord-form{position:sticky;top:90px;background:var(--bg3);border:1px solid var(--line);border-radius:18px;padding:1.4rem}
+.ord-form h3{font:500 1.5rem/1 var(--disp);margin:0 0 1rem;color:var(--g1)}
+.ord-form label{display:block;font-size:.85rem;color:var(--mut);margin:.8rem 0 .3rem}
+.ord-form input,.ord-form textarea,.ord-form select{width:100%;box-sizing:border-box;padding:.7rem .85rem;border-radius:10px;border:1px solid var(--line2);background:var(--bg);color:var(--ink);font:inherit}
+.ord-modes{display:flex;flex-wrap:wrap;gap:.5rem}.ord-modes label{margin:0;display:flex;gap:.4rem;align-items:center;border:1px solid var(--line2);border-radius:999px;padding:.45rem .8rem;cursor:pointer;color:var(--ink)}
+.ord-modes input{width:auto}
+.ord-cart{font-size:.9rem;color:var(--mut);margin:.4rem 0}.ord-cart li{display:flex;justify-content:space-between}
+.ord-total{display:flex;justify-content:space-between;font-weight:600;margin:.6rem 0;color:var(--g1)}
+.ord-msg{margin-top:.8rem;padding:.7rem .9rem;border-radius:10px;font-size:.9rem}.ord-msg.ok{background:#1f6b5a55;border:1px solid var(--em)}.ord-msg.err{background:#7a1f1f55;border:1px solid #c0504d}
+.ord-form .btn{width:100%;margin-top:1rem}
+.ord-closed{padding:1rem;border:1px dashed var(--line2);border-radius:14px;color:var(--mut)}
