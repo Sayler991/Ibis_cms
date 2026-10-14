@@ -238,7 +238,7 @@
 
   /* ---------- démarrage ---------- */
   if (!sb) { $('#boot').textContent = 'Configuration Supabase manquante (config.js).'; return; }
-  var current = null;
+  var current;
   sb.auth.onAuthStateChange(function (ev, session) {
     var uid = session && session.user && session.user.id;
     if (uid === current) return; current = uid;
